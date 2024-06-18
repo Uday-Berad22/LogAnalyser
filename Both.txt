@@ -1,0 +1,121 @@
+import React, { useState } from "react";
+import "./style.css";
+import logImage from "./file.png"; // Add an image file in the src directory
+
+function App() {
+  const [file, setFile] = useState(null);
+  const [csvFileUrl, setCsvFileUrl] = useState("");
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("http://localhost:5000/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    setCsvFileUrl(data.csvFileUrl);
+  };
+
+  return (
+    <div className="App">
+      <header>
+        <h1>Log to CSV Converter</h1>
+      </header>
+      <form onSubmit={handleSubmit}>
+        <input type="file" onChange={handleFileChange} />
+        <button type="submit">Upload</button>
+      </form>
+      {csvFileUrl && (
+        <div>
+          <a href={csvFileUrl} download="output.csv">
+            Download CSV
+          </a>
+        </div>
+      )}
+      <img src={logImage} alt="Log Processing" />
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}a
+
+header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input[type="file"] {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #21a1f1;
+}
+
+a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a:hover {
+  background-color: #21a1f1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+}

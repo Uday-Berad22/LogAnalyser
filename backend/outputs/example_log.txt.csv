@@ -1,0 +1,15 @@
+Timestamp,Log Type,Component Name,Message
+12:30:45 15/06/24,INFO,ComponentA,Starting process
+12:31:00 15/06/24,DEBUG,ComponentB,Initializing variables
+12:32:15 15/06/24,ERROR,ComponentC,Failed to load resource
+12:33:25 15/06/24,WARN,ComponentA,Deprecated API usage
+12:34:50 15/06/24,INFO,ComponentD,Task completed successfully
+12:35:30 15/06/24,INFO,ComponentA,Sending data to server
+12:36:10 15/06/24,ERROR,ComponentB,Connection timeout
+12:37:45 15/06/24,DEBUG,ComponentC,Received new configuration
+12:38:00 15/06/24,INFO,ComponentD,Processing new data
+12:39:20 15/06/24,WARN,ComponentA,Low disk space warning
+12:40:55 15/06/24,ERROR,ComponentB,Network error detected
+12:41:15 15/06/24,INFO,ComponentC,System reboot scheduled
+12:42:05 15/06/24,DEBUG,ComponentD,Cache cleared
+12:43:25 15/06/24,INFO,ComponentA,Data backup completed
